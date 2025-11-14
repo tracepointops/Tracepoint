@@ -19,6 +19,41 @@ msgstr ""
 "X-Crowdin-File-ID: 27\n"
 
 #. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join your Swanson Team"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join your team on Swansons Operational Dashboard"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "{senderName} (<0>{senderEmail}</0>) has invited you to join our workspace."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join Workspace"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Who is Swanson?"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Swanson Industries is a leading provider of hydraulic cylinder manufacturing, remanufacturing, repair and distribution services strategically located throughout the United States."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Visit"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/emails/warn-suspended-workspace.email.tsx
 msgid "Suspended Workspace"
 msgstr "Ausgesetzter Arbeitsbereich"
@@ -72,21 +107,6 @@ msgstr "{senderName} (<0>{senderEmail}</0>): Bitte validieren Sie diese Domain, 
 #: src/emails/test.email.tsx
 msgid "Test email"
 msgstr "Test E-Mail"
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "Join your team on Twenty"
-msgstr "Treten Sie Ihrem Team auf Twenty bei"
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "{senderName} (<0>{senderEmail}</0>) has invited you to join a workspace called <1>{workspaceName}</1>."
-msgstr "{senderName} (<0>{senderEmail}</0>) hat Sie eingeladen, einem Arbeitsbereich namens <1>{workspaceName}</1> beizutreten."
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "Accept invite"
-msgstr "Einladung akzeptieren"
 
 #. js-lingui-explicit-id
 #: src/emails/send-email-verification-link.email.tsx

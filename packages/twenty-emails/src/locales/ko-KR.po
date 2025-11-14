@@ -19,6 +19,41 @@ msgstr ""
 "X-Crowdin-File-ID: 27\n"
 
 #. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join your Swanson Team"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join your team on Swansons Operational Dashboard"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "{senderName} (<0>{senderEmail}</0>) has invited you to join our workspace."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Join Workspace"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Who is Swanson?"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Swanson Industries is a leading provider of hydraulic cylinder manufacturing, remanufacturing, repair and distribution services strategically located throughout the United States."
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/emails/send-invite-link.email.tsx
+msgid "Visit"
+msgstr ""
+
+#. js-lingui-explicit-id
 #: src/emails/warn-suspended-workspace.email.tsx
 msgid "Suspended Workspace"
 msgstr "중단된 워크스페이스"
@@ -72,21 +107,6 @@ msgstr "{senderName} (<0>{senderEmail}</0>): <1>@{domain}</1> 이메일 주소�
 #: src/emails/test.email.tsx
 msgid "Test email"
 msgstr "테스트 이메일"
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "Join your team on Twenty"
-msgstr "Twenty에서 팀에 합류하세요"
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "{senderName} (<0>{senderEmail}</0>) has invited you to join a workspace called <1>{workspaceName}</1>."
-msgstr "{senderName} (<0>{senderEmail}</0>)님이 <1>{workspaceName}</1>이라는 워크스페이스에 가입하도록 초대했습니다."
-
-#. js-lingui-explicit-id
-#: src/emails/send-invite-link.email.tsx
-msgid "Accept invite"
-msgstr "초대 수락"
 
 #. js-lingui-explicit-id
 #: src/emails/send-email-verification-link.email.tsx
