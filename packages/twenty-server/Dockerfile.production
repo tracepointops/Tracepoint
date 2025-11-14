@@ -30,7 +30,7 @@ COPY tsconfig.base.json ./
 
 # Build
 WORKDIR /app/packages/twenty-server
-RUN npx nx build twenty-server --skip-nx-cache
+RUN npx rimraf dist && npx nest build --path ./tsconfig.build.json
 
 # Clean up build artifacts to save memory
 RUN rm -rf /app/.yarn/cache /app/packages/twenty-server/src
