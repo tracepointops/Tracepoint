@@ -26,6 +26,7 @@ jobs:
         run: |
           gcloud builds submit \
             --config=cloudbuild.yaml \
+            --machine-type=e2-highcpu-32 \
             --project=tracepoint-d4c9d
 
       - name: Get service URL
