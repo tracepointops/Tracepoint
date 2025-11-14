@@ -32,7 +32,7 @@ COPY packages/twenty-shared/package.json ./packages/twenty-shared/
 COPY packages/twenty-server/patches ./packages/twenty-server/patches
 
 # Install all dependencies
-RUN yarn install --immutable
+RUN yarn install
 
 # Copy source code
 COPY packages/twenty-server ./packages/twenty-server/
