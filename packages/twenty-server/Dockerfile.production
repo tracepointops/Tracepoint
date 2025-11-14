@@ -1,6 +1,9 @@
-FROM node:20-slim
+# ============================================
+# Stage 1: Builder - Install and build
+# ============================================
+FROM node:20-slim AS builder
 
-# Install ALL build dependencies for native modules and Twenty server
+# Install build dependencies (cached layer - rarely changes)
 RUN apt-get update && apt-get install -y \
     python3 \
     make \
@@ -14,35 +17,62 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Enable Corepack for Yarn 4
+# Enable Corepack (cached layer)
 RUN corepack enable && corepack prepare yarn@4.9.2 --activate
 
 WORKDIR /app
 
-# Copy root package files
+# Copy package files FIRST (cached if dependencies don't change)
 COPY package.json yarn.lock .yarnrc.yml ./
 COPY .yarn ./.yarn
-
-# Copy workspace package.json files
 COPY packages/twenty-server/package.json ./packages/twenty-server/
 COPY packages/twenty-emails/package.json ./packages/twenty-emails/
 COPY packages/twenty-shared/package.json ./packages/twenty-shared/
-
-# Copy patches directory (required for yarn install)
 COPY packages/twenty-server/patches ./packages/twenty-server/patches
 
-# Install all dependencies
+# Install dependencies (heavy layer - cached if package.json unchanged)
 RUN yarn install
 
-# Copy source code
+# Copy source code (changes frequently - kept near end)
 COPY packages/twenty-server ./packages/twenty-server/
 COPY packages/twenty-emails ./packages/twenty-emails/
 COPY packages/twenty-shared ./packages/twenty-shared/
 COPY tsconfig.base.json ./
 
-# Build
+# Build application
 WORKDIR /app/packages/twenty-server
 RUN yarn build
+
+# ============================================
+# Stage 2: Production runtime - minimal image
+# ============================================
+FROM node:20-slim
+
+# Install only runtime dependencies (libvips for image processing)
+RUN apt-get update && apt-get install -y \
+    libvips42 \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# Enable Corepack
+RUN corepack enable && corepack prepare yarn@4.9.2 --activate
+
+WORKDIR /app
+
+# Copy package files for production install
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn
+COPY packages/twenty-server/package.json ./packages/twenty-server/
+COPY packages/twenty-emails/package.json ./packages/twenty-emails/
+COPY packages/twenty-shared/package.json ./packages/twenty-shared/
+
+# Install ONLY production dependencies
+RUN yarn workspaces focus twenty-server --production
+
+# Copy built application from builder
+COPY --from=builder /app/packages/twenty-server/dist ./packages/twenty-server/dist
+COPY --from=builder /app/packages/twenty-emails ./packages/twenty-emails
+COPY --from=builder /app/packages/twenty-shared ./packages/twenty-shared
 
 WORKDIR /app
 
