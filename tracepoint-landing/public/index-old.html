@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracepoint Development Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #090161, #353434, #000000);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 1200px;
+        }
+
+        .logo {
+            font-size: 6rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #e7e7e7 0%, #7a7a83 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e0e0e0;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 3rem;
+        }
+
+        .app-selection {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .app-card {
+            background: rgb(45, 45, 58);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(253, 253, 253, 0.315);
+            border-radius: 20px;
+            padding: 2rem;
+            width: 300px;
+            transition: all 1.0s ease;
+            cursor: pointer;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .app-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .app-name {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #0e63d1;
+        }
+
+        .app-description {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        footer {
+            margin-top: 4rem;
+            color: #a3a3a3;
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            width: 150px;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 4rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .app-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo"></div>
+        <h1>Tracepoint Development Tools</h1>
+        <p class="subtitle">Select Your Application</p>
+
+        <div class="app-selection">
+            <div class="app-card" onclick="window.location.href='https://top.tracepointops.com'">
+                <div class="app-icon"></div>
+                <div class="app-name">MAIN</div>
+                <div class="app-description">CRM & Operations<br>Management System</div>
+            </div>
+
+            <div class="app-card" onclick="window.location.href='https://tops.tracepointops.com'">
+                <div class="app-icon"></div>
+                <div class="app-name">BRANCH</div>
+                <div class="app-description">Tracepoint Operations<br>Platform & Services</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Tracepoint Operations<br>Swanson Industries © 2025</p>
+            <img src="/images/logos/swanson logo full (1) (1).png" alt="Swanson Industries" class="footer-logo" onerror="this.style.display='none'">
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+runtime: nodejs20
+
+env: standard
+
+instance_class: F4
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 10
+  target_cpu_utilization: 0.65
+
+# Skip npm install, we already have node_modules
+skip_files:
+- ^(.*/)?#.*#$
+- ^(.*/)?.*~$
+- ^(.*/)?.*\.py[co]$
+- ^(.*/)?.*/RCS/.*$
+- ^(.*/)?\..*$
+- ^(.*/)?.*\.bak$
+
+env_variables:
+  NODE_ENV: "production"
+  SERVER_URL: "https://top.tracepointops.com"
+  FRONTEND_URL: "https://top.tracepointops.com"
+  PG_DATABASE_URL: "postgres://postgres:%25a%5Cm_nB%22%2CMBt%5DV%28b@35.243.158.128:5432/postgres"
+  REDIS_URL: "rediss://default:AXgtAAIncDIzZGMxY2FiZjBlZWU0OWYxOGE1OTAxYWIxZmI5MTdiNnAyMzA3NjU@glowing-gelding-30765.upstash.io:6379"
+  APP_SECRET: "mznK22c/2Bb0uF2ilXI3nF/svINmUn9XGBFalvnwb58="
+  SIGN_IN_PREFILLED: "false"
+  NPM_CONFIG_PRODUCTION: "false"
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always

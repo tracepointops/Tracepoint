@@ -27,8 +27,11 @@ const StyledModalDiv = styled(motion.div)<{
       : modalVariant === 'transparent'
         ? 'none'
         : theme.boxShadow.strong};
-  background: ${({ theme, modalVariant }) =>
-    modalVariant === 'transparent' ? 'transparent' : theme.background.primary};
+  background: ${({ theme, modalVariant }) => {
+    if (modalVariant === 'transparent') return 'transparent';
+    if (modalVariant === 'primary') return theme.color.tracepointBlack;
+    return theme.background.primary;
+  }};
   color: ${({ theme }) => theme.font.color.primary};
   border-radius: ${({ theme, isMobile, modalVariant }) => {
     if (isMobile || modalVariant === 'transparent') return `0`;
@@ -125,7 +128,7 @@ const StyledBackDrop = styled(motion.div)<{
 }>`
   align-items: center;
   background: ${({ theme, modalVariant }) =>
-    modalVariant === 'primary' || modalVariant === 'transparent'
+    modalVariant === 'primary'
       ? theme.background.overlayPrimary
       : modalVariant === 'secondary'
         ? theme.background.overlaySecondary

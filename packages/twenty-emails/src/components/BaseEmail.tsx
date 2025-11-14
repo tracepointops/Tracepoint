@@ -1,3 +1,4 @@
+import { type I18n } from '@lingui/core';
 import { I18nProvider } from '@lingui/react';
 import { Container, Html } from '@react-email/components';
 
@@ -17,7 +18,7 @@ export const BaseEmail = ({ children, width, locale }: BaseEmailProps) => {
   const i18nInstance = createI18nInstance(locale);
 
   return (
-    <I18nProvider i18n={i18nInstance}>
+    <I18nProvider i18n={i18nInstance as I18n}>
       <Html lang={locale}>
         <BaseHead />
         <Container width={width || 290}>

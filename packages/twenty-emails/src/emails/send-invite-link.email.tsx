@@ -1,5 +1,4 @@
 import { Trans } from '@lingui/react';
-import { Img } from '@react-email/components';
 import { emailTheme } from 'src/common-style';
 
 import { BaseEmail } from 'src/components/BaseEmail';
@@ -8,12 +7,11 @@ import { HighlightedContainer } from 'src/components/HighlightedContainer';
 import { HighlightedText } from 'src/components/HighlightedText';
 import { Link } from 'src/components/Link';
 import { MainText } from 'src/components/MainText';
+import { SubTitle } from 'src/components/SubTitle';
 import { Title } from 'src/components/Title';
-import { WhatIsTwenty } from 'src/components/WhatIsTwenty';
 import { capitalize } from 'src/utils/capitalize';
 import { createI18nInstance } from 'src/utils/i18n.utils';
 import { type APP_LOCALES } from 'twenty-shared/translations';
-import { getImageAbsoluteURI } from 'twenty-shared/utils';
 
 type SendInviteLinkEmailProps = {
   link: string;
@@ -29,55 +27,54 @@ type SendInviteLinkEmailProps = {
 
 export const SendInviteLinkEmail = ({
   link,
-  workspace,
+  workspace: _workspace,
   sender,
-  serverUrl,
+  serverUrl: _serverUrl,
   locale,
 }: SendInviteLinkEmailProps) => {
   const i18n = createI18nInstance(locale);
-  const workspaceLogo = workspace.logo
-    ? getImageAbsoluteURI({ imageUrl: workspace.logo, baseUrl: serverUrl })
-    : null;
 
   const senderName = capitalize(sender.firstName);
   const senderEmail = sender.email;
-  const workspaceName = workspace.name;
 
   return (
     <BaseEmail width={333} locale={locale}>
-      <Title value={i18n._('Join your team on Twenty')} />
+      <Title value={i18n._('Join your Swanson Team')} />
       <MainText>
-        <Trans
-          id="{senderName} (<0>{senderEmail}</0>) has invited you to join a workspace called <1>{workspaceName}</1>."
-          values={{ senderName, senderEmail, workspaceName }}
-          components={{
-            0: (
-              <Link
-                href={`mailto:${senderEmail}`}
-                value={senderEmail}
-                color={emailTheme.font.colors.blue}
-              />
-            ),
-            1: <b />,
-          }}
-        />
-        <br />
+        <>
+          {i18n._('Join your team on Swansons Operational Dashboard')}
+          <br />
+          <br />
+          <Trans
+            id="{senderName} (<0>{senderEmail}</0>) has invited you to join our workspace."
+            values={{ senderName, senderEmail }}
+            components={{
+              0: (
+                <Link
+                  href={`mailto:${senderEmail}`}
+                  value={senderEmail}
+                  color={emailTheme.font.colors.blue}
+                />
+              ),
+            }}
+          />
+          <br />
+        </>
       </MainText>
       <HighlightedContainer>
-        {workspaceLogo ? (
-          <Img
-            src={workspaceLogo}
-            width={40}
-            height={40}
-            alt="Workspace logo"
-          />
-        ) : (
-          <></>
-        )}
-        {workspace.name ? <HighlightedText value={workspace.name} /> : <></>}
-        <CallToAction href={link} value={i18n._('Accept invite')} />
+        <HighlightedText value="Swanson Industries Workspace" />
+        <CallToAction href={link} value={i18n._('Join Workspace')} />
       </HighlightedContainer>
-      <WhatIsTwenty i18n={i18n} />
+      <SubTitle value={i18n._('Who is Swanson?')} />
+      <MainText>
+        {i18n._(
+          'Swanson Industries is a leading provider of hydraulic cylinder manufacturing, remanufacturing, repair and distribution services strategically located throughout the United States.',
+        )}
+      </MainText>
+      <CallToAction
+        href="https://swansonindustries.com/"
+        value={i18n._('Visit')}
+      />
     </BaseEmail>
   );
 };

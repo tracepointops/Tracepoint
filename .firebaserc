@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "tracepoint-d4c9d"
+  },
+  "targets": {
+    "tracepoint-d4c9d": {
+      "hosting": {
+        "landing": [
+          "tracepoint-d4c9d"
+        ],
+        "top": [
+          "top-tracepointops"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+FROM node:20-slim
+
+# Install ALL build dependencies for native modules and Twenty server
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    gcc \
+    git \
+    ca-certificates \
+    libvips-dev \
+    libvips42 \
+    pkg-config \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Enable Corepack for Yarn 4
+RUN corepack enable && corepack prepare yarn@4.9.2 --activate
+
+WORKDIR /app
+
+# Copy root package files
+COPY package.json yarn.lock .yarnrc.yml ./
+COPY .yarn ./.yarn
+
+# Copy workspace package.json files
+COPY packages/twenty-server/package.json ./packages/twenty-server/
+COPY packages/twenty-emails/package.json ./packages/twenty-emails/
+COPY packages/twenty-shared/package.json ./packages/twenty-shared/
+
+# Copy patches directory (required for yarn install)
+COPY packages/twenty-server/patches ./packages/twenty-server/patches
+
+# Install all dependencies
+RUN yarn install --immutable
+
+# Copy source code
+COPY packages/twenty-server ./packages/twenty-server/
+COPY packages/twenty-emails ./packages/twenty-emails/
+COPY packages/twenty-shared ./packages/twenty-shared/
+COPY tsconfig.base.json ./
+
+# Build
+WORKDIR /app/packages/twenty-server
+RUN yarn build
+
+WORKDIR /app
+
+# Expose port
+EXPOSE 3000
+
+# Start server
+CMD ["node", "/app/packages/twenty-server/dist/src/main.js"]

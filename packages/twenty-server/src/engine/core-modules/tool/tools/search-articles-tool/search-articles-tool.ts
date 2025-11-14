@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
+import { type FlexibleSchema } from '@ai-sdk/provider-utils';
 import axios from 'axios';
 
 import { SearchArticlesToolParametersZodSchema } from 'src/engine/core-modules/tool/tools/search-articles-tool/search-articles-tool.schema';
@@ -12,7 +13,7 @@ import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twent
 export class SearchArticlesTool implements Tool {
   description =
     'Search Twenty documentation and help articles to find information about features, setup, usage, and troubleshooting.';
-  inputSchema = SearchArticlesToolParametersZodSchema;
+  inputSchema: FlexibleSchema<unknown> = SearchArticlesToolParametersZodSchema;
 
   constructor(private readonly twentyConfigService: TwentyConfigService) {}
 

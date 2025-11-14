@@ -1,5 +1,7 @@
 .git
 .env
-node_modules
 .nx/cache
-packages/twenty-server/.env
+packages/twenty-server/.env.local
+packages/twenty-server/.env.development
+packages/twenty-front/node_modules
+packages/twenty-e2e-testing/node_modules

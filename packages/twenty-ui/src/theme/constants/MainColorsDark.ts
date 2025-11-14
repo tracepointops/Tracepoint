@@ -38,4 +38,13 @@ export const MAIN_COLORS_DARK = {
   orange: RadixColors.orangeDarkP3.orange9,
   amber: RadixColors.amberDarkP3.amber9,
   yellow: RadixColors.yellowDarkP3.yellow9,
+
+  // TracePoint Custom Colors (Dark Mode) - Using closest Radix matches
+  tracepointBlue: RadixColors.blueDarkP3.blue9, // Close to #1277db - Primary actions
+  tracepointGrey: RadixColors.slateDarkP3.slate11, // Close to #7794ab - Secondary text
+  tracepointGreen: RadixColors.tealDarkP3.teal9, // Close to #228375 - Success states
+  tracepointRed: RadixColors.tomatoDarkP3.tomato9, // Close to #c32438 - Errors
+  tracepointAmber: RadixColors.orangeDarkP3.orange10, // Close to #cd6a0a - Warnings
+  tracepointBackground: RadixColors.slateDarkP3.slate1, // Dark background
+  tracepointBlack: 'color(display-p3 0 0 0)', // True black #000000 in P3 color space
 };

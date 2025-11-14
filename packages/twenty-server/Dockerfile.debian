@@ -1,0 +1,28 @@
+FROM node:20-bookworm-slim
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    python3 \
+    make \
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy everything
+COPY . .
+
+# Copy production env file
+COPY packages/twenty-server/.env.production packages/twenty-server/.env
+
+# Set working directory to server
+WORKDIR /app/packages/twenty-server
+
+# Expose port
+EXPOSE 3000
+
+# Set environment
+ENV NODE_ENV=production
+
+# Start the pre-built server
+CMD ["node", "dist/src/main.js"]

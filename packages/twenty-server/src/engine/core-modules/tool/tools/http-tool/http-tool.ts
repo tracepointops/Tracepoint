@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
+import { type FlexibleSchema } from '@ai-sdk/provider-utils';
 import axios, { type AxiosRequestConfig } from 'axios';
 import { isDefined } from 'twenty-shared/utils';
 import { parseDataFromContentType } from 'twenty-shared/workflow';
@@ -16,7 +17,7 @@ import { TwentyConfigService } from 'src/engine/core-modules/twenty-config/twent
 export class HttpTool implements Tool {
   description =
     'Make an HTTP request to any URL with configurable method, headers, and body.';
-  inputSchema = HttpToolParametersZodSchema;
+  inputSchema: FlexibleSchema<unknown> = HttpToolParametersZodSchema;
 
   constructor(private readonly twentyConfigService: TwentyConfigService) {}
 

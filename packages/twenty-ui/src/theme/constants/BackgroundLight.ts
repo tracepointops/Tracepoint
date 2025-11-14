@@ -26,7 +26,7 @@ export const BACKGROUND_LIGHT = {
     orange: TRANSPARENT_COLORS_LIGHT.orange3,
     success: TRANSPARENT_COLORS_LIGHT.green3,
   },
-  overlayPrimary: TRANSPARENT_COLORS_LIGHT.gray11,
+  overlayPrimary: '#000000',
   overlaySecondary: TRANSPARENT_COLORS_LIGHT.gray9,
   overlayTertiary: TRANSPARENT_COLORS_LIGHT.gray4,
   radialGradient: `radial-gradient(50% 62.62% at 50% 0%, ${GRAY_SCALE_LIGHT.gray9} 0%, ${GRAY_SCALE_LIGHT.gray10} 100%)`,

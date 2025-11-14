@@ -5,10 +5,13 @@ const logoStyle = {
 };
 
 export const Logo = () => {
+  // Use environment variable or fallback to localhost for development
+  const baseUrl = process.env.SERVER_URL || 'http://localhost:3000';
+
   return (
     <Img
-      src="https://app.twenty.com/images/icons/windows11/Square150x150Logo.scale-100.png"
-      alt="Twenty logo"
+      src={`${baseUrl}/images/logos/logoicon.png`}
+      alt="Swanson Industries logo"
       width="40"
       height="40"
       style={logoStyle}

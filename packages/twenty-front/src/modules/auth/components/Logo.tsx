@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
-import { isNonEmptyString } from '@sniptt/guards';
 import { AppPath } from 'twenty-shared/types';
 import { getImageAbsoluteURI, isDefined } from 'twenty-shared/utils';
-import { Avatar } from 'twenty-ui/display';
 import { UndecoratedLink } from 'twenty-ui/navigation';
 import { REACT_APP_SERVER_BASE_URL } from '~/config';
 import { useRedirectToDefaultDomain } from '~/modules/domain-manager/hooks/useRedirectToDefaultDomain';
@@ -15,61 +13,38 @@ type LogoProps = {
 };
 
 const StyledContainer = styled.div`
-  height: ${({ theme }) => theme.spacing(12)};
+  border-radius: 12px;
+  color: ${({ theme }) => theme.color.tracepointAmber};
+  height: ${({ theme }) => theme.spacing(40)};
   margin-bottom: ${({ theme }) => theme.spacing(4)};
-  margin-top: ${({ theme }) => theme.spacing(4)};
-
+  margin-top: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(2)};
   position: relative;
-  width: ${({ theme }) => theme.spacing(12)};
-`;
-
-const StyledSecondaryLogo = styled.img`
-  border-radius: ${({ theme }) => theme.border.radius.xs};
-  height: ${({ theme }) => theme.spacing(6)};
-  width: ${({ theme }) => theme.spacing(6)};
-`;
-
-const StyledSecondaryLogoContainer = styled.div`
-  align-items: center;
-  background-color: ${({ theme }) => theme.background.primary};
-  border-radius: ${({ theme }) => theme.border.radius.sm};
-  bottom: ${({ theme }) => `-${theme.spacing(3)}`};
-  display: flex;
-  height: ${({ theme }) => theme.spacing(7)};
-  justify-content: center;
-
-  position: absolute;
-  right: ${({ theme }) => `-${theme.spacing(3)}`};
-  width: ${({ theme }) => theme.spacing(7)};
+  width: ${({ theme }) => theme.spacing(75)};
 `;
 
 const StyledPrimaryLogo = styled.div<{ src: string }>`
   background: url(${(props) => props.src});
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   height: 100%;
   width: 100%;
 `;
 
 export const Logo = ({
   primaryLogo,
-  secondaryLogo,
-  placeholder,
+  secondaryLogo: _secondaryLogo,
+  placeholder: _placeholder,
   onClick,
 }: LogoProps) => {
   const { redirectToDefaultDomain } = useRedirectToDefaultDomain();
-  const defaultPrimaryLogoUrl = `${window.location.origin}/images/icons/android/android-launchericon-192-192.png`;
+  const defaultPrimaryLogoUrl = `${window.location.origin}/images/logos/Tracepoint-logo2.png`;
 
   const primaryLogoUrl = getImageAbsoluteURI({
     imageUrl: primaryLogo ?? defaultPrimaryLogoUrl,
     baseUrl: REACT_APP_SERVER_BASE_URL,
   });
-
-  const secondaryLogoUrl = isNonEmptyString(secondaryLogo)
-    ? getImageAbsoluteURI({
-        imageUrl: secondaryLogo,
-        baseUrl: REACT_APP_SERVER_BASE_URL,
-      })
-    : null;
 
   const isUsingDefaultLogo = !isDefined(primaryLogo);
 
@@ -84,22 +59,6 @@ export const Logo = ({
         </UndecoratedLink>
       ) : (
         <StyledPrimaryLogo src={primaryLogoUrl} />
-      )}
-      {isDefined(secondaryLogoUrl) ? (
-        <StyledSecondaryLogoContainer>
-          <StyledSecondaryLogo src={secondaryLogoUrl} />
-        </StyledSecondaryLogoContainer>
-      ) : (
-        isDefined(placeholder) && (
-          <StyledSecondaryLogoContainer>
-            <Avatar
-              size="lg"
-              placeholder={placeholder}
-              type="squared"
-              placeholderColorSeed={placeholder}
-            />
-          </StyledSecondaryLogoContainer>
-        )
       )}
     </StyledContainer>
   );

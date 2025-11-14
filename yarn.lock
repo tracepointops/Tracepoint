@@ -9780,25 +9780,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/core@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "@lingui/core@npm:5.1.2"
-  dependencies:
-    "@babel/runtime": "npm:^7.20.13"
-    "@lingui/message-utils": "npm:^5.1.2"
-    unraw: "npm:^3.0.0"
-  peerDependencies:
-    "@lingui/babel-plugin-lingui-macro": 5.1.2
-    babel-plugin-macros: 2 || 3
-  peerDependenciesMeta:
-    "@lingui/babel-plugin-lingui-macro":
-      optional: true
-    babel-plugin-macros:
-      optional: true
-  checksum: 10c0/94092bc8630395af5093c0661c1d8f8d6525f09d55be5e68f948e5b9c79e47ef627b12c6102dbe764113695e477a6bb46caae335869b4ef818e452ef202520ac
-  languageName: node
-  linkType: hard
-
 "@lingui/core@npm:^5.5.1":
   version: 5.5.1
   resolution: "@lingui/core@npm:5.5.1"
@@ -9856,14 +9837,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lingui/react@npm:5.1.2, @lingui/react@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "@lingui/react@npm:5.1.2"
+"@lingui/react@npm:^5.5.1":
+  version: 5.6.0
+  resolution: "@lingui/react@npm:5.6.0"
   dependencies:
     "@babel/runtime": "npm:^7.20.13"
-    "@lingui/core": "npm:^5.1.2"
+    "@lingui/core": "npm:5.6.0"
   peerDependencies:
-    "@lingui/babel-plugin-lingui-macro": 5.1.2
+    "@lingui/babel-plugin-lingui-macro": 5.6.0
     babel-plugin-macros: 2 || 3
     react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
   peerDependenciesMeta:
@@ -9871,7 +9852,7 @@ __metadata:
       optional: true
     babel-plugin-macros:
       optional: true
-  checksum: 10c0/894476f00918140fe186ef6f53e150d00dd850d9cf7ed93ca91f14d3bcc00eeb6701afca8c26e96db602fb9c545bb694eea014566653e5da38a11d685e3525d7
+  checksum: 10c0/dedf6f7be6ee30a02e96f74cf46e2dac6714c384e711a29cbdc7d4a6cd69a9974c4f152e2a08c78103b7924afee38264430f8598878452bb01989b94538f92a5
   languageName: node
   linkType: hard
 
@@ -57284,13 +57265,6 @@ __metadata:
     webpack-sources: "npm:^3.2.3"
     webpack-virtual-modules: "npm:^0.6.2"
   checksum: 10c0/85dca6ea362f23af36597119e12b8bf022164f6efaf8027cfe10f07ff53d7722f4b58572447d77f64e27c9d657d8937e6d8c9a66884f3189379f2c3184fd1836
-  languageName: node
-  linkType: hard
-
-"unraw@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "unraw@npm:3.0.0"
-  checksum: 10c0/cd1e7a961c8dc075bdf07300bc046da6bc8c4f1b88c68191c392520f0c64914fa783d48f2431c668f79b1afbd4bab16e864c7aca3cc06ddc94567c1fec114b43
   languageName: node
   linkType: hard
 

@@ -119,7 +119,7 @@ export default defineConfig(({ command, mode }) => {
       lingui({
         configPath: path.resolve(__dirname, './lingui.config.ts'),
       }),
-      checker(checkers),
+      // checker(checkers), // Commented out to fix TS5042 error on Windows/WSL
       {
         ...wyw({
           include: [

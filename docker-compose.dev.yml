@@ -1,0 +1,63 @@
+services:
+  twenty-dev:
+    build:
+      context: .
+      dockerfile: packages/twenty-docker/twenty/Dockerfile
+      target: common-deps
+    volumes:
+      # Mount source code for live editing
+      - ./packages/twenty-server:/app/packages/twenty-server
+      - ./packages/twenty-front:/app/packages/twenty-front
+      - ./packages/twenty-ui:/app/packages/twenty-ui
+      - ./packages/twenty-shared:/app/packages/twenty-shared
+      - ./packages/twenty-emails:/app/packages/twenty-emails
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - PG_DATABASE_URL=postgres://postgres:postgres@db:5432/default
+      - REDIS_URL=redis://redis:6379
+      - SERVER_URL=http://localhost:3000
+      - STORAGE_TYPE=local
+      - NODE_OPTIONS=--max-old-space-size=8192
+      - NX_DAEMON=false
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    command: sh -c "npx nx start"
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:16
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: default
+    volumes:
+      - twenty-db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: pg_isready -U postgres -h localhost
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  twenty-db-data:

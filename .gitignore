@@ -48,3 +48,7 @@ dump.rdb
 
 mcp.json
 /.junie/
+
+# Sensitive credentials - never commit
+.credentials/
+**/.credentials/

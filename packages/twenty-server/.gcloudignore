@@ -1,0 +1,25 @@
+# This file specifies files that are *not* uploaded to Google Cloud
+.gcloudignore
+.git
+.gitignore
+.env.local
+.env.development
+src/
+scripts/
+test/
+*.test.ts
+*.spec.ts
+*.test.js
+*.spec.js
+.nx/
+.vscode/
+coverage/
+patches/
+.yarn/
+*.md
+README.md
+tsconfig*.json
+jest.config.js
+.eslintrc.js
+.prettierrc
+node_modules/

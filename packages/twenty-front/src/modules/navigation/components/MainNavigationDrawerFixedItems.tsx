@@ -13,6 +13,15 @@ import { getSettingsPath } from 'twenty-shared/utils';
 import { IconSearch, IconSettings, IconSparkles } from 'twenty-ui/display';
 import { useIsMobile } from 'twenty-ui/utilities';
 import { FeatureFlagKey } from '~/generated/graphql';
+import styled from '@emotion/styled';
+
+const BlueIconSearch = styled(IconSearch)`
+  color: ${({ theme }) => theme.color.sky};
+`;
+
+const PurpleIconSparkles = styled(IconSparkles)`
+  color: ${({ theme }) => theme.color.violet};
+`;
 
 export const MainNavigationDrawerFixedItems = () => {
   const isMobile = useIsMobile();
@@ -40,7 +49,7 @@ export const MainNavigationDrawerFixedItems = () => {
       <>
         <NavigationDrawerItem
           label={t`Search`}
-          Icon={IconSearch}
+          Icon={BlueIconSearch}
           onClick={openRecordsSearchPage}
           keyboard={['/']}
           mouseUpNavigation={true}
@@ -48,23 +57,12 @@ export const MainNavigationDrawerFixedItems = () => {
         {isAiEnabled && (
           <NavigationDrawerItem
             label={t`Ask AI`}
-            Icon={IconSparkles}
+            Icon={PurpleIconSparkles}
             onClick={() => openAskAIPage()}
             keyboard={['@']}
             mouseUpNavigation={true}
           />
         )}
-        <NavigationDrawerItem
-          label={t`Settings`}
-          to={getSettingsPath(SettingsPath.ProfilePage)}
-          onClick={() => {
-            setNavigationDrawerExpandedMemorized(isNavigationDrawerExpanded);
-            setIsNavigationDrawerExpanded(true);
-            setNavigationMemorizedUrl(location.pathname + location.search);
-            navigate(getSettingsPath(SettingsPath.ProfilePage));
-          }}
-          Icon={IconSettings}
-        />
       </>
     )
   );

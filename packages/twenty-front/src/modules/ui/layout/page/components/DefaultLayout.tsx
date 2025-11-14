@@ -10,7 +10,6 @@ import { MobileNavigationBar } from '@/navigation/components/MobileNavigationBar
 import { useIsSettingsPage } from '@/navigation/hooks/useIsSettingsPage';
 import { OBJECT_SETTINGS_WIDTH } from '@/settings/data-model/constants/ObjectSettings';
 import { SignInAppNavigationDrawerMock } from '@/sign-in-background-mock/components/SignInAppNavigationDrawerMock';
-import { SignInBackgroundMockPage } from '@/sign-in-background-mock/components/SignInBackgroundMockPage';
 import { useShowFullscreen } from '@/ui/layout/fullscreen/hooks/useShowFullscreen';
 import { useShowAuthModal } from '@/ui/layout/hooks/useShowAuthModal';
 import { NAV_DRAWER_WIDTHS } from '@/ui/navigation/navigation-drawer/constants/NavDrawerWidths';
@@ -36,11 +35,12 @@ const StyledLayout = styled.div`
   }
 `;
 
-const StyledPageContainer = styled(motion.div)`
+const StyledPageContainer = styled(motion.div)<{ $hide?: boolean }>`
   display: flex;
   flex: 1 1 auto;
   flex-direction: row;
   min-height: 0;
+  ${({ $hide }) => $hide && 'opacity: 0; pointer-events: none;'}
 `;
 
 const StyledAppNavigationDrawer = styled(AppNavigationDrawer)`
@@ -78,6 +78,7 @@ export const DefaultLayout = () => {
         <AppErrorBoundary FallbackComponent={AppFullScreenErrorFallback}>
           <InformationBannerIsImpersonating />
           <StyledPageContainer
+            $hide={showAuthModal}
             animate={{
               marginLeft:
                 isSettingsPage && !isMobile && !useShowFullScreen
@@ -103,20 +104,7 @@ export const DefaultLayout = () => {
             ) : useShowFullScreen ? null : (
               <StyledAppNavigationDrawer />
             )}
-            {showAuthModal ? (
-              <>
-                <StyledMainContainer>
-                  <SignInBackgroundMockPage />
-                </StyledMainContainer>
-                <AnimatePresence mode="wait">
-                  <LayoutGroup>
-                    <AuthModal>
-                      <Outlet />
-                    </AuthModal>
-                  </LayoutGroup>
-                </AnimatePresence>
-              </>
-            ) : (
+            {!showAuthModal && (
               <StyledMainContainer>
                 <AppErrorBoundary FallbackComponent={AppPageErrorFallback}>
                   <Outlet />
@@ -124,6 +112,17 @@ export const DefaultLayout = () => {
               </StyledMainContainer>
             )}
           </StyledPageContainer>
+          {showAuthModal && (
+            <>
+              <AnimatePresence mode="wait">
+                <LayoutGroup>
+                  <AuthModal>
+                    <Outlet />
+                  </AuthModal>
+                </LayoutGroup>
+              </AnimatePresence>
+            </>
+          )}
           {isMobile && !showAuthModal && <MobileNavigationBar />}
         </AppErrorBoundary>
       </StyledLayout>
