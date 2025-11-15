@@ -27,10 +27,11 @@ COPY packages/twenty-server ./packages/twenty-server/
 COPY packages/twenty-emails ./packages/twenty-emails/
 COPY packages/twenty-shared ./packages/twenty-shared/
 COPY tsconfig.base.json ./
+COPY nx.json ./
 
 # Build shared packages first
-WORKDIR /app
-RUN npx nx build twenty-shared --skip-nx-cache || echo "Shared package build completed"
+WORKDIR /app/packages/twenty-shared
+RUN npx vite build
 
 # Build server
 WORKDIR /app/packages/twenty-server
