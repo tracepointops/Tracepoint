@@ -22,6 +22,7 @@ steps:
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
+      - '--port=3000'
       - '--add-cloudsql-instances=tracepoint-d4c9d:us-east1:tracepoint-top-db'
       - '--set-env-vars=DATABASE_MIGRATION=run,SERVER_URL=https://top.tracepointops.com,FRONTEND_URL=https://top.tracepointops.com,IS_MULTIWORKSPACE_ENABLED=false,DEFAULT_SUBDOMAIN='
       - '--set-secrets=PG_DATABASE_URL=PG_DATABASE_URL:latest'
