@@ -29,19 +29,15 @@ COPY packages/twenty-shared ./packages/twenty-shared/
 COPY tsconfig.base.json ./
 COPY nx.json ./
 
-# Build shared packages first
+# Build shared package (required dependency)
 WORKDIR /app/packages/twenty-shared
 RUN npx vite build
 
-# Build emails package
-WORKDIR /app/packages/twenty-emails
-RUN npx vite build
-
-# Build server
+# Build server (emails will be resolved at runtime from source)
 WORKDIR /app/packages/twenty-server
 RUN npx rimraf dist && npx nest build --path ./tsconfig.build.json
 
-# Clean up build artifacts to save memory (but keep dist folders)
+# Clean up build artifacts to save memory (but keep dist folders and emails src)
 RUN rm -rf /app/.yarn/cache /app/packages/twenty-server/src /app/packages/twenty-shared/src
 
 WORKDIR /app
