@@ -21,8 +21,8 @@ client.connect().then(() => {
 ")
 
 if [ "$SCHEMA_EXISTS" = "false" ]; then
-  echo "📦 Database is empty - running setup from compiled scripts..."
-  node dist/scripts/setup-db.js
+  echo "📦 Database is empty - running setup from TypeScript source..."
+  npx tsx ./scripts/setup-db.ts
   echo "🌱 Running database migrations..."
   yarn database:migrate:prod
   echo "🌱 Seeding dev workspaces..."

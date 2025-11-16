@@ -41,12 +41,15 @@ RUN npx vite build
 WORKDIR /app/packages/twenty-server
 RUN npx rimraf dist && npx nest build --path ./tsconfig.build.json
 
-# Clean up build artifacts to save memory (keep src/database and scripts for setup)
+# Clean up build artifacts to save memory (keep scripts and database source for setup)
 RUN rm -rf /app/.yarn/cache \
     /app/packages/twenty-server/src/engine \
     /app/packages/twenty-server/src/modules \
     /app/packages/twenty-server/src/filters \
     /app/packages/twenty-server/src/utils \
+    /app/packages/twenty-server/src/main.ts \
+    /app/packages/twenty-server/src/instrument.ts \
+    /app/packages/twenty-server/src/app.module.ts \
     /app/packages/twenty-shared/src
 
 WORKDIR /app
