@@ -36,6 +36,13 @@
       ],
       "rewrites": [
         {
+          "source": "/client-config**",
+          "run": {
+            "serviceId": "top-backend",
+            "region": "us-east1"
+          }
+        },
+        {
           "source": "/graphql**",
           "run": {
             "serviceId": "top-backend",
