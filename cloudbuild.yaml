@@ -6,8 +6,7 @@ steps:
       - '--context=dir:///workspace'
       - '--destination=gcr.io/$PROJECT_ID/top-backend:latest'
       - '--cache=true'
-      - '--cache-ttl=1h'
-      - '--no-push-cache'  # Don't use cache for this build to force rebuild
+      - '--cache-ttl=24h'
 
   # Deploy to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
