@@ -31,7 +31,7 @@ Build twenty-emails package with proper configuration to handle @react-email/com
 - **Problem:** Cloud SQL in us-east1, deployment to us-central1
 - **Fix:** Updated cloudbuild.yaml region to us-east1
 
-### Issue 2: Database Connection String ✅  
+### Issue 2: Database Connection String ✅
 - **Problem:** PG_DATABASE_URL had wrong region in socket path
 - **Fix:** Updated secret with us-east1 socket path
 
@@ -47,11 +47,14 @@ Build twenty-emails package with proper configuration to handle @react-email/com
 - **Problem:** Cloud Run expected 8080, app uses 3000
 - **Fix:** Added `--port=3000` to deployment
 
-### Issue 6: twenty-emails ESM/CommonJS Conflict ✅
+### Issue 6: twenty-emails ESM/CommonJS Conflict
 - **Problem:** Cannot load ESM .ts files from CommonJS require
 - **Root Cause:** Changed exports to src/index.ts which is TypeScript/ESM
-- **Fix:** 
-  1. Reverted package.json to use dist/index.js
-  2. Added @react-email/components and @tiptap/core as external dependencies in vite.config.ts
-  3. Re-enabled twenty-emails build step in Dockerfile
-- **Status:** FIXED - Build #24
+- **Fix Attempt #1 (Build #24):** ❌ FAILED
+  - Added only `@react-email/components` as external
+  - Vite still tried to bundle it and failed resolution
+- **Fix Attempt #2 (Build #25):** 🔄 IN PROGRESS
+  - Added ALL @react-email/* packages individually as external
+  - Added regex pattern `/@react-email\/.*/` to match any @react-email package
+  - Should allow vite to build without bundling these dependencies
+- **Status:** Testing Build #25
