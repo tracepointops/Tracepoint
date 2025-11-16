@@ -33,7 +33,7 @@ COPY nx.json ./
 WORKDIR /app/packages/twenty-shared
 RUN npx vite build
 
-# Build emails package  
+# Build emails package
 WORKDIR /app/packages/twenty-emails
 RUN npx vite build
 
@@ -46,7 +46,11 @@ RUN rm -rf /app/.yarn/cache /app/packages/twenty-server/src /app/packages/twenty
 
 WORKDIR /app
 
+# Copy entrypoint script
+COPY packages/twenty-server/entrypoint.sh /app/packages/twenty-server/
+RUN chmod +x /app/packages/twenty-server/entrypoint.sh
+
 EXPOSE 3000
 
-# Start server
-CMD ["node", "/app/packages/twenty-server/dist/src/main.js"]
+# Use entrypoint script that handles database setup
+ENTRYPOINT ["/app/packages/twenty-server/entrypoint.sh"]
