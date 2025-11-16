@@ -33,5 +33,12 @@ else
   yarn command:prod upgrade || echo "⚠️  Upgrade failed but continuing..."
 fi
 
+echo "🔄 Registering background sync jobs..."
+if yarn command:prod cron:register:all; then
+  echo "✅ Successfully registered all background sync jobs!"
+else
+  echo "⚠️  Warning: Failed to register background jobs, but continuing startup..."
+fi
+
 echo "🚀 Starting Twenty server..."
 exec node /app/packages/twenty-server/dist/src/main.js
