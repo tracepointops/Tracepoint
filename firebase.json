@@ -36,6 +36,34 @@
       ],
       "rewrites": [
         {
+          "source": "/graphql**",
+          "run": {
+            "serviceId": "top-backend",
+            "region": "us-east1"
+          }
+        },
+        {
+          "source": "/metadata**",
+          "run": {
+            "serviceId": "top-backend",
+            "region": "us-east1"
+          }
+        },
+        {
+          "source": "/healthz**",
+          "run": {
+            "serviceId": "top-backend",
+            "region": "us-east1"
+          }
+        },
+        {
+          "source": "/rest**",
+          "run": {
+            "serviceId": "top-backend",
+            "region": "us-east1"
+          }
+        },
+        {
           "source": "**",
           "destination": "/index.html"
         }
