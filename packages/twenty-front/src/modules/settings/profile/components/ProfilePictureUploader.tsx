@@ -64,9 +64,12 @@ export const ProfilePictureUploader = () => {
         },
       });
 
+      // Add cache-busting timestamp to force browser reload
+      const avatarUrlWithCacheBust = `${buildSignedPath(signedFile)}?v=${Date.now()}`;
+
       setCurrentWorkspaceMember({
         ...currentWorkspaceMember,
-        avatarUrl: buildSignedPath(signedFile),
+        avatarUrl: avatarUrlWithCacheBust,
       });
 
       return result;

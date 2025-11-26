@@ -173,7 +173,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'Hello! Can you help me understand our current product roadmap and key metrics?',
+          'Hello! Can you help me understand our current hydraulic cylinder production schedule and key performance metrics?',
         createdAt: new Date(baseTime.getTime()),
       },
       {
@@ -182,7 +182,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          "Hello! I'd be happy to help you understand Apple's product roadmap and metrics. Based on your workspace data, I can see you have various projects and initiatives tracked. What specific aspect would you like to explore - product development timelines, user engagement metrics, or revenue targets?",
+          "Hello! I'm SIA, and I'd be happy to help you understand Swanson Industries' production schedule and metrics. Based on your workspace data, I can see you have various manufacturing orders and customer accounts tracked. What specific aspect would you like to explore - cylinder production timelines, facility performance metrics, or order fulfillment targets?",
         createdAt: new Date(baseTime.getTime() + 5 * 60 * 1000),
       },
       {
@@ -191,7 +191,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          "I'd like to focus on our user engagement metrics and how they're trending over the last quarter.",
+          "I'd like to focus on our facility performance metrics and how production output is trending over the last quarter.",
         createdAt: new Date(baseTime.getTime() + 10 * 60 * 1000),
       },
       {
@@ -200,7 +200,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'Great! Looking at your user engagement data, I can see several key trends from the last quarter. Your active user base has grown by 15%, with particularly strong engagement in the mobile app. Daily active users are averaging 2.3 million, and session duration has increased by 8%. Would you like me to dive deeper into any specific engagement metrics or create a detailed report?',
+          'Great! Looking at your facility performance data, I can see several key trends from the last quarter. Overall production output has increased by 15%, with particularly strong performance from our Morgantown facility. Daily cylinder completions are averaging 250 units, and manufacturing efficiency has improved by 8%. Would you like me to dive deeper into any specific facility metrics or create a detailed production report?',
         createdAt: new Date(baseTime.getTime() + 15 * 60 * 1000),
       },
     ];
@@ -250,7 +250,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'What are the current startup trends and which companies in our portfolio are performing best?',
+          'What are our top customer accounts and which facilities are handling the highest order volumes?',
         createdAt: new Date(baseTime.getTime()),
       },
       {
@@ -259,7 +259,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'Hello! I can help you analyze startup trends and portfolio performance. From your YCombinator workspace data, I can see strong performance in AI/ML startups, particularly in the B2B SaaS space. Several companies are showing 40%+ month-over-month growth. Would you like me to provide specific company performance metrics or focus on broader industry trends?',
+          'Hello! I'm SIA, and I can help you analyze customer accounts and facility performance. From your Swanson Industries workspace data, I can see strong order volumes from mining equipment customers, particularly in the longwall shield refurbishment segment. Several facilities are showing 40%+ increases in monthly production capacity. Would you like me to provide specific facility performance metrics or focus on broader customer trends?',
         createdAt: new Date(baseTime.getTime() + 3 * 60 * 1000),
       },
       {
@@ -268,7 +268,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'Please focus on our top 5 performing companies and their key metrics.',
+          'Please focus on our top 5 customer accounts and their order volumes.',
         createdAt: new Date(baseTime.getTime() + 8 * 60 * 1000),
       },
       {
@@ -277,7 +277,7 @@ const seedChatMessages = async ({
         orderIndex: 0,
         type: 'text',
         textContent:
-          'Here are your top 5 performing portfolio companies: 1) TechFlow AI - 45% MoM growth, $2M ARR, 2) DataSync Pro - 38% MoM growth, $1.5M ARR, 3) CloudOps Solutions - 35% MoM growth, $3.2M ARR, 4) SecureNet - 32% MoM growth, $1.8M ARR, 5) HealthTech Plus - 28% MoM growth, $2.5M ARR. All are showing strong customer retention (>95%) and expanding market share. Would you like detailed breakdowns for any specific company?',
+          'Here are your top 5 customer accounts by order volume: 1) Atlas Mining Co. - 45% increase in orders, $2.8M annual, 2) Northern Shield Systems - 38% growth, $2.1M annual, 3) Longwall Equipment Inc. - 35% increase, $3.5M annual, 4) Underground Services Ltd. - 32% growth, $2.4M annual, 5) Mountain Mining Solutions - 28% increase, $2.9M annual. All customers are showing strong repeat order rates (>95%) and expanding their equipment fleets. Would you like detailed breakdowns for any specific customer account?',
         createdAt: new Date(baseTime.getTime() + 12 * 60 * 1000),
       },
     ];

@@ -5,10 +5,11 @@ export const WORKFLOW_BUILDER_AGENT: StandardAgentDefinition = {
   standardId: '20202020-0002-0001-0001-000000000001',
   name: 'workflow-builder',
   label: 'Workflow Builder',
-  description: 'AI agent specialized in creating and managing workflows',
+  description:
+    'SIA - Swanson Integrated Assistant specialized in creating and managing workflows',
   icon: 'IconSettingsAutomation',
   applicationId: null,
-  prompt: `You are a Workflow Builder Agent specialized in helping users create, modify, and manage workflows in Twenty.
+  prompt: `You are SIA (Swanson Integrated Assistant), created by Wayne Lytle to help Swanson Industries users create, modify, and manage workflows in Tracepoint.
 
 Your capabilities include:
 - Creating new workflows from scratch based on user requirements

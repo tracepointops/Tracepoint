@@ -1,14 +1,13 @@
 import { useSignInUp } from '@/auth/sign-in-up/hooks/useSignInUp';
 import { useSignInUpForm } from '@/auth/sign-in-up/hooks/useSignInUpForm';
 import {
-  SignInUpStep,
-  signInUpStepState,
+    SignInUpStep,
+    signInUpStepState,
 } from '@/auth/states/signInUpStepState';
 import { workspacePublicDataState } from '@/auth/states/workspacePublicDataState';
 import styled from '@emotion/styled';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { Logo } from '@/auth/components/Logo';
 import { Title } from '@/auth/components/Title';
 import { EmailVerificationSent } from '@/auth/sign-in-up/components/EmailVerificationSent';
 import { FooterNote } from '@/auth/sign-in-up/components/FooterNote';
@@ -33,7 +32,6 @@ import { useLingui } from '@lingui/react/macro';
 import { useSearchParams } from 'react-router-dom';
 import { isDefined } from 'twenty-shared/utils';
 import { Loader } from 'twenty-ui/feedback';
-import { AnimatedEaseIn } from 'twenty-ui/utilities';
 import { type PublicWorkspaceDataOutput } from '~/generated/graphql';
 
 const StyledLoaderContainer = styled.div`
@@ -43,6 +41,19 @@ const StyledLoaderContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(8)};
   width: 100%;
   margin-bottom: ${({ theme }) => theme.spacing(8)};
+`;
+
+const StyledTopLeftLogo = styled.div`
+  position: fixed;
+  top: ${({ theme }) => theme.spacing(4)};
+  left: ${({ theme }) => theme.spacing(4)};
+  z-index: 1001;
+`;
+
+const StyledLogoImage = styled.img`
+  height: 100px;
+  width: auto;
+  cursor: pointer;
 `;
 
 const StandardContent = ({
@@ -59,27 +70,27 @@ const StandardContent = ({
   onClickOnLogo: () => void;
 }) => {
   return (
-    <Modal.Content isVerticalCentered isHorizontalCentered>
-      <AnimatedEaseIn>
-        <Logo
-          secondaryLogo={workspacePublicData?.logo}
-          placeholder={workspacePublicData?.displayName}
+    <>
+      <StyledTopLeftLogo>
+        <StyledLogoImage
+          src="/images/logos/luna-logo-white.png"
+          alt="Tracepoint"
           onClick={onClickOnLogo}
         />
-      </AnimatedEaseIn>
-      <Title animate>{title}</Title>
-      {signInUpForm}
-      {![
-        SignInUpStep.Password,
-        SignInUpStep.TwoFactorAuthenticationProvision,
-        SignInUpStep.TwoFactorAuthenticationVerification,
-        SignInUpStep.WorkspaceSelection,
-      ].includes(signInUpStep) && <FooterNote />}
-    </Modal.Content>
+      </StyledTopLeftLogo>
+      <Modal.Content isVerticalCentered isHorizontalCentered>
+        <Title animate>{title}</Title>
+        {signInUpForm}
+        {![
+          SignInUpStep.Password,
+          SignInUpStep.TwoFactorAuthenticationProvision,
+          SignInUpStep.TwoFactorAuthenticationVerification,
+          SignInUpStep.WorkspaceSelection,
+        ].includes(signInUpStep) && <FooterNote />}
+      </Modal.Content>
+    </>
   );
-};
-
-export const SignInUp = () => {
+};export const SignInUp = () => {
   const { t } = useLingui();
   const setSignInUpStep = useSetRecoilState(signInUpStepState);
   const clientConfigApiStatus = useRecoilValue(clientConfigApiStatusState);

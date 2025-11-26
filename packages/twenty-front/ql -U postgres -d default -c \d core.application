@@ -1,0 +1,40 @@
+                                     Table "core.application"
+          Column           |           Type           | Collation | Nullable |      Default       
+---------------------------+--------------------------+-----------+----------+--------------------
+ id                        | uuid                     |           | not null | uuid_generate_v4()
+ universalIdentifier       | uuid                     |           | not null | 
+ name                      | text                     |           | not null | 
+ description               | text                     |           |          | 
+ version                   | text                     |           |          | 
+ sourceType                | text                     |           | not null | 'local'::text
+ sourcePath                | text                     |           | not null | 
+ workspaceId               | uuid                     |           | not null | 
+ createdAt                 | timestamp with time zone |           | not null | now()
+ updatedAt                 | timestamp with time zone |           | not null | now()
+ deletedAt                 | timestamp with time zone |           |          | 
+ serverlessFunctionLayerId | uuid                     |           |          | 
+Indexes:
+    "PK_569e0c3e863ebdf5f2408ee1670" PRIMARY KEY, btree (id)
+    "IDX_APPLICATION_UNIVERSAL_IDENTIFIER_WORKSPACE_ID_UNIQUE" UNIQUE, btree ("universalIdentifier", "workspaceId") WHERE "deletedAt" IS NULL AND "universalIdentifier" IS NOT NULL
+    "IDX_APPLICATION_WORKSPACE_ID" btree ("workspaceId")
+Foreign-key constraints:
+    "FK_08d1d5e33c2a3ce7c140e9b335b" FOREIGN KEY ("workspaceId") REFERENCES core.workspace(id) ON DELETE CASCADE DEFERRABLE INITIALLY DEFERRED
+Referenced by:
+    TABLE "core."fieldMetadata"" CONSTRAINT "FK_05453a954e458e3d91f2ff5043f" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."indexMetadata"" CONSTRAINT "FK_056363e1599f5b9a0e33323d9da" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core.agent" CONSTRAINT "FK_259c48f99f625708723414adb5d" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core.view" CONSTRAINT "FK_348e25d584c7e51417f4e097941" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core.workspace" CONSTRAINT "FK_3b1acb13a5dac9956d1a4b32755" FOREIGN KEY ("workspaceCustomApplicationId") REFERENCES core.application(id) ON DELETE RESTRICT
+    TABLE "core."applicationVariable"" CONSTRAINT "FK_51adb49e7f8df35dd23e01c4830" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."viewGroup"" CONSTRAINT "FK_5aff384532c78fa8a42ceeae282" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."serverlessFunction"" CONSTRAINT "FK_62cbd26626ff76df897181c7994" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."routeTrigger"" CONSTRAINT "FK_6edf47a8bfe17a5811998dc7162" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."objectMetadata"" CONSTRAINT "FK_71a7af5a5c916f0b96f358f25f7" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core.role" CONSTRAINT "FK_7f3b96f15aaf5a27549288d264b" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."cronTrigger"" CONSTRAINT "FK_817ea28e71e3b19acc258dd7dcd" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."databaseEventTrigger"" CONSTRAINT "FK_9acc2804037a5c885633024368d" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."viewField"" CONSTRAINT "FK_b560ea62a958deff0c6059caa45" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."viewFilterGroup"" CONSTRAINT "FK_bfc3498b964ef1bfc89b1f2bee3" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."viewFilter"" CONSTRAINT "FK_d5651cf33fa56a47cd262a3fb2c" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+    TABLE "core."viewSort"" CONSTRAINT "FK_ff8cbebe1704954120df82bf393" FOREIGN KEY ("applicationId") REFERENCES core.application(id) ON DELETE CASCADE
+

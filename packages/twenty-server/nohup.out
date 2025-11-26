@@ -1,0 +1,25 @@
+Frontend build not found or not writable, assuming it is served independently
+query: SELECT * FROM current_schema()
+query: SELECT version();
+node:net:1940
+    const ex = new UVExceptionWithHostPort(err, 'listen', address, port);
+               ^
+
+Error: listen EADDRINUSE: address already in use :::3000
+    at Server.setupListenHandle [as _listen2] (node:net:1940:16)
+    at listenInCluster (node:net:1997:12)
+    at Server.listen (node:net:2102:7)
+    at ExpressAdapter.listen (/home/lytle/twenty-dev/node_modules/@nestjs/platform-express/adapters/express-adapter.js:88:32)
+    at /home/lytle/twenty-dev/node_modules/@nestjs/core/nest-application.js:180:30
+    at new Promise (<anonymous>)
+    at NestApplication.listen (/home/lytle/twenty-dev/node_modules/@nestjs/core/nest-application.js:169:16)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async bootstrap (/home/lytle/twenty-dev/packages/twenty-server/dist/src/main.js:66:5) {
+  code: 'EADDRINUSE',
+  errno: -98,
+  syscall: 'listen',
+  address: '::',
+  port: 3000
+}
+
+Node.js v24.5.0

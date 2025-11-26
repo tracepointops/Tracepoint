@@ -39,7 +39,7 @@ export const Logo = ({
   onClick,
 }: LogoProps) => {
   const { redirectToDefaultDomain } = useRedirectToDefaultDomain();
-  const defaultPrimaryLogoUrl = `${window.location.origin}/images/logos/Tracepoint-logo2.png`;
+  const defaultPrimaryLogoUrl = `${window.location.origin}/images/logos/blank.png`;
 
   const primaryLogoUrl = getImageAbsoluteURI({
     imageUrl: primaryLogo ?? defaultPrimaryLogoUrl,

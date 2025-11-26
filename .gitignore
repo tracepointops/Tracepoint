@@ -52,3 +52,6 @@ mcp.json
 # Sensitive credentials - never commit
 .credentials/
 **/.credentials/
+
+#Misc document for notes
+/home/lytle/twenty-dev/Misc_docs

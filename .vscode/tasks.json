@@ -2,12 +2,63 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"type": "npm",
-			"script": "start",
-			"path": "server",
+			"label": "🚀 Start All TracePoint Services",
+			"type": "shell",
+			"command": "${workspaceFolder}/start-all-services.sh",
 			"problemMatcher": [],
-			"label": "yarn: start - server",
-			"detail": "yarn start"
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"clear": true
+			}
+		},
+		{
+			"label": "🛑 Stop All TracePoint Services",
+			"type": "shell",
+			"command": "${workspaceFolder}/stop-all-services.sh",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"clear": true
+			}
+		},
+		{
+			"label": "📊 Check Service Status",
+			"type": "shell",
+			"command": "${workspaceFolder}/check-services.sh",
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared",
+				"clear": true
+			}
+		},
+		{
+			"label": "📝 Backend Logs",
+			"type": "shell",
+			"command": "tail -f /tmp/tracepoint-backend.log",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "📝 Worker Logs",
+			"type": "shell",
+			"command": "tail -f /tmp/tracepoint-worker.log",
+			"isBackground": true,
+			"problemMatcher": []
+		},
+		{
+			"label": "🔨 Build & Deploy Frontend",
+			"type": "shell",
+			"command": "cd ${workspaceFolder}/packages/twenty-front && rm -rf build && yarn build && firebase deploy --only hosting",
+			"problemMatcher": []
+		},
+		{
+			"label": "🔄 Restart Backend",
+			"type": "shell",
+			"command": "pkill -f 'yarn start:prod' && sleep 2 && cd ${workspaceFolder}/packages/twenty-server && nohup yarn start:prod > /tmp/tracepoint-backend.log 2>&1 & echo 'Backend restarted'",
+			"problemMatcher": []
 		}
 	]
 }

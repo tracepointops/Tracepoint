@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import React from 'react';
 
 import { useWorkspaceFavorites } from '@/favorites/hooks/useWorkspaceFavorites';
 import { NavigationDrawerSectionForObjectMetadataItems } from '@/object-metadata/components/NavigationDrawerSectionForObjectMetadataItems';
@@ -7,7 +8,7 @@ import { useFilteredObjectMetadataItems } from '@/object-metadata/hooks/useFilte
 import { useIsPrefetchLoading } from '@/prefetch/hooks/useIsPrefetchLoading';
 import { useLingui } from '@lingui/react/macro';
 
-export const NavigationDrawerOpenedSection = () => {
+export const NavigationDrawerOpenedSection = React.memo(() => {
   const { t } = useLingui();
 
   const { activeNonSystemObjectMetadataItems } =
@@ -56,4 +57,4 @@ export const NavigationDrawerOpenedSection = () => {
       />
     )
   );
-};
+});

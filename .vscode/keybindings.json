@@ -1,0 +1,27 @@
+[
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🚀 Start All TracePoint Services"
+  },
+  {
+    "key": "ctrl+shift+x",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🛑 Stop All TracePoint Services"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.action.tasks.runTask",
+    "args": "📊 Check Service Status"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "workbench.action.tasks.runTask",
+    "args": "📝 Backend Logs"
+  },
+  {
+    "key": "ctrl+shift+d",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🔨 Build & Deploy Frontend"
+  }
+]

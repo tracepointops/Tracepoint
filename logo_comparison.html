@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LUNA Logo Comparison - Blue to White</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 40px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #64ffda;
+            margin-bottom: 40px;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .logo-box {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .logo-box h2 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        .logo-box img {
+            max-width: 100%;
+            height: auto;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .dark-bg {
+            background: #0f0f23;
+        }
+        .info {
+            background: rgba(100, 255, 218, 0.1);
+            border-left: 4px solid #64ffda;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .success {
+            color: #64ffda;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌙 LUNA Logo Conversion Review</h1>
+        
+        <div class="comparison">
+            <div class="logo-box">
+                <h2>Original (Blue)</h2>
+                <img src="file:///home/lytle/twenty-dev/Misc_docs/zzxz-no-bg.png" alt="Original Logo">
+            </div>
+            <div class="logo-box">
+                <h2>Converted (White) ✨</h2>
+                <img src="file:///home/lytle/twenty-dev/packages/twenty-front/public/images/logos/luna-logo-white.png" alt="Converted Logo">
+            </div>
+        </div>
+
+        <h2 style="text-align: center; margin-top: 60px;">Dark Background Preview</h2>
+        <div class="comparison">
+            <div class="logo-box dark-bg">
+                <h2 style="color: white;">Original on Dark</h2>
+                <img src="file:///home/lytle/twenty-dev/Misc_docs/zzxz-no-bg.png" alt="Original Logo">
+            </div>
+            <div class="logo-box dark-bg">
+                <h2 style="color: white;">Converted on Dark</h2>
+                <img src="file:///home/lytle/twenty-dev/packages/twenty-front/public/images/logos/luna-logo-white.png" alt="Converted Logo">
+            </div>
+        </div>
+
+        <div class="info">
+            <p class="success">✅ Conversion Complete!</p>
+            <p><strong>New logo location:</strong> packages/twenty-front/public/images/logos/luna-logo-white.png</p>
+            <p><strong>Image size:</strong> 677 x 369 pixels</p>
+            <p><strong>Changes made:</strong> All blue colors converted to white, transparency preserved</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 import { styled } from '@linaria/react';
 import { isNonEmptyString, isNull, isUndefined } from '@sniptt/guards';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 import { invalidAvatarUrlsState } from '@ui/display/avatar/components/states/isInvalidAvatarUrlState';
 import { AVATAR_PROPERTIES_BY_SIZE } from '@ui/display/avatar/constants/AvatarPropertiesBySize';
@@ -107,9 +107,21 @@ export const Avatar = ({
 
   const handleImageError = () => {
     if (isNonEmptyString(avatarImageURI)) {
-      setInvalidAvatarUrls((prev) => [...prev, avatarImageURI]);
+      // Only add to invalid list if it's not a cache-busted URL
+      if (!avatarImageURI.includes('?v=') && !avatarImageURI.includes('?t=')) {
+        setInvalidAvatarUrls((prev) => [...prev, avatarImageURI]);
+      }
     }
   };
+
+  // Clear invalid cache when avatar changes
+  useEffect(() => {
+    if (isNonEmptyString(avatarImageURI)) {
+      setInvalidAvatarUrls((prev) =>
+        prev.filter(url => !url.startsWith(avatarImageURI.split('?')[0]))
+      );
+    }
+  }, [avatarUrl, avatarImageURI, setInvalidAvatarUrls]);
 
   const fixedColor = isPlaceholderFirstCharEmpty
     ? theme.font.color.tertiary

@@ -103,7 +103,7 @@ export const IframeWidget = ({ widget }: IframeWidgetProps) => {
         title={title}
         onLoad={handleIframeLoad}
         onError={handleIframeError}
-        sandbox="allow-scripts allow-forms allow-popups"
+        sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-forms"
         allow="encrypted-media"
         allowFullScreen
       />

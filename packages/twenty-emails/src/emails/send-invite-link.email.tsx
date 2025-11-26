@@ -12,6 +12,8 @@ import { Title } from 'src/components/Title';
 import { capitalize } from 'src/utils/capitalize';
 import { createI18nInstance } from 'src/utils/i18n.utils';
 import { type APP_LOCALES } from 'twenty-shared/translations';
+import tracepointLogoBlue from '../assets/tracepoint-logo-blue.png';
+import swansonLogo from '../assets/swanson-logo.png';
 
 type SendInviteLinkEmailProps = {
   link: string;
@@ -39,14 +41,28 @@ export const SendInviteLinkEmail = ({
 
   return (
     <BaseEmail width={333} locale={locale}>
-      <Title value={i18n._('Join your Swanson Team')} />
+      <div style={{ textAlign: 'center', marginBottom: '24px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+        <img
+          src={swansonLogo}
+          alt="Swanson Industries"
+          style={{ width: '180px', height: 'auto' }}
+        />
+        <img
+          src={tracepointLogoBlue}
+          alt="Tracepoint"
+          style={{ width: '160px', height: 'auto' }}
+        />
+      </div>
+      <Title value={i18n._('Join Swanson Industries Team')} />
       <MainText>
         <>
-          {i18n._('Join your team on Swansons Operational Dashboard')}
+          {i18n._(
+            'You have been invited to join your team on Tracepoint - A Swanson Industries Workspace.',
+          )}
           <br />
           <br />
           <Trans
-            id="{senderName} (<0>{senderEmail}</0>) has invited you to join our workspace."
+            id="{senderName} (<0>{senderEmail}</0>) has invited you to join the Swanson Industries workspace."
             values={{ senderName, senderEmail }}
             components={{
               0: (
@@ -65,7 +81,7 @@ export const SendInviteLinkEmail = ({
         <HighlightedText value="Swanson Industries Workspace" />
         <CallToAction href={link} value={i18n._('Join Workspace')} />
       </HighlightedContainer>
-      <SubTitle value={i18n._('Who is Swanson?')} />
+      <SubTitle value={i18n._('About Swanson Industries')} />
       <MainText>
         {i18n._(
           'Swanson Industries is a leading provider of hydraulic cylinder manufacturing, remanufacturing, repair and distribution services strategically located throughout the United States.',
@@ -73,20 +89,20 @@ export const SendInviteLinkEmail = ({
       </MainText>
       <CallToAction
         href="https://swansonindustries.com/"
-        value={i18n._('Visit')}
+        value={i18n._('Learn More')}
       />
     </BaseEmail>
   );
 };
 
 SendInviteLinkEmail.PreviewProps = {
-  link: 'https://app.twenty.com/invite/123',
+  link: 'https://top.tracepointops.com/invite/123',
   workspace: {
-    name: 'Acme Inc.',
-    logo: 'https://fakeimg.pl/200x200/?text=ACME&font=lobster',
+    name: 'Swanson Industries',
+    logo: tracepointLogoBlue,
   },
-  sender: { email: 'john.doe@example.com', firstName: 'John', lastName: 'Doe' },
-  serverUrl: 'https://app.twenty.com',
+  sender: { email: 'wayne@swanson.com', firstName: 'Wayne', lastName: 'Lytle' },
+  serverUrl: 'https://top.tracepointops.com',
   locale: 'en',
 } as SendInviteLinkEmailProps;
 

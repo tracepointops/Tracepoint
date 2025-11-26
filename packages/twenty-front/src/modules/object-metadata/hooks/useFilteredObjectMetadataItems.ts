@@ -23,7 +23,7 @@ export const useFilteredObjectMetadataItems = () => {
   );
 
   const alphaSortedActiveNonSystemObjectMetadataItems =
-    activeNonSystemObjectMetadataItems.sort((a, b) => {
+    [...activeNonSystemObjectMetadataItems].sort((a, b) => {
       if (a.nameSingular < b.nameSingular) {
         return -1;
       }

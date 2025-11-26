@@ -1,4 +1,5 @@
 import { useRecoilValue } from 'recoil';
+import React from 'react';
 
 import { currentUserState } from '@/auth/states/currentUserState';
 import { NavigationDrawerSectionForObjectMetadataItems } from '@/object-metadata/components/NavigationDrawerSectionForObjectMetadataItems';
@@ -8,7 +9,7 @@ import { useIsPrefetchLoading } from '@/prefetch/hooks/useIsPrefetchLoading';
 import { useLingui } from '@lingui/react/macro';
 import { isDefined } from 'twenty-shared/utils';
 
-export const RemoteNavigationDrawerSection = () => {
+export const RemoteNavigationDrawerSection = React.memo(() => {
   const currentUser = useRecoilValue(currentUserState);
   const { t } = useLingui();
 
@@ -29,4 +30,4 @@ export const RemoteNavigationDrawerSection = () => {
       isRemote={true}
     />
   );
-};
+});

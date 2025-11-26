@@ -13,17 +13,6 @@
           "source": "**",
           "destination": "/index.html"
         }
-      ],
-      "headers": [
-        {
-          "source": "**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=3600"
-            }
-          ]
-        }
       ]
     },
     {
@@ -36,63 +25,8 @@
       ],
       "rewrites": [
         {
-          "source": "/client-config**",
-          "run": {
-            "serviceId": "top-backend",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/graphql**",
-          "run": {
-            "serviceId": "top-backend",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/metadata**",
-          "run": {
-            "serviceId": "top-backend",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/healthz**",
-          "run": {
-            "serviceId": "top-backend",
-            "region": "us-east1"
-          }
-        },
-        {
-          "source": "/rest**",
-          "run": {
-            "serviceId": "top-backend",
-            "region": "us-east1"
-          }
-        },
-        {
           "source": "**",
           "destination": "/index.html"
-        }
-      ],
-      "headers": [
-        {
-          "source": "**/*.@(js|css|woff|woff2|ttf|eot|svg|png|jpg|jpeg|gif|ico)",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=31536000, immutable"
-            }
-          ]
-        },
-        {
-          "source": "**",
-          "headers": [
-            {
-              "key": "Cache-Control",
-              "value": "public, max-age=0, must-revalidate"
-            }
-          ]
         }
       ]
     }

@@ -6,6 +6,7 @@ import { getSettingsPath } from 'twenty-shared/utils';
 import { IconSettings } from 'twenty-ui/display';
 import { useIsMobile } from 'twenty-ui/utilities';
 import styled from '@emotion/styled';
+import React from 'react';
 
 import { currentWorkspaceState } from '@/auth/states/currentWorkspaceState';
 import { MainNavigationDrawerFixedItems } from '@/navigation/components/MainNavigationDrawerFixedItems';
@@ -23,7 +24,7 @@ const RedIconSettings = styled(IconSettings)`
   color: ${({ theme }) => theme.color.red};
 `;
 
-export const MainNavigationDrawer = ({ className }: { className?: string }) => {
+export const MainNavigationDrawer = React.memo(({ className }: { className?: string }) => {
   const currentWorkspace = useRecoilValue(currentWorkspaceState);
   const isMobile = useIsMobile();
   const location = useLocation();
@@ -68,4 +69,4 @@ export const MainNavigationDrawer = ({ className }: { className?: string }) => {
       </NavigationDrawerFixedContent>
     </NavigationDrawer>
   );
-};
+});
